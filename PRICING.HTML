@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>Пакети</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  background: black;
+  overflow: hidden;
+  color: white;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+
+.card:hover { transform: translateY(-10px); }
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="py-20 text-center relative">
+<h1 class="text-4xl mb-10">Избери пакет</h1>
+
+<div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+<!-- БАЗОВ -->
+
+<div class="card bg-gray-800 p-4 rounded-xl">
+<h3 class="text-green-300 text-xl font-bold">БАЗОВ</h3>
+<p class="mt-2">✔ Име на звезда</p>
+<p>✔ Дигитален сертификат</p>
+<p class="mt-2 text-xl">$29</p>
+<button onclick="go()" class="mt-3 bg-white text-black px-3 py-1 rounded">Плати</button>
+</div>
+
+<!-- СТАНДАРТ -->
+
+<div class="card bg-gray-700 p-4 rounded-xl">
+<h3 class="text-yellow-300 text-xl font-bold">СТАНДАРТ</h3>
+<p class="mt-2">✔ Всичко от БАЗОВ</p>
+<p>✔ Карта на звезда</p>
+<p>✔ Координати в космоса</p>
+<p class="mt-2 text-xl">$59</p>
+<button onclick="go()" class="mt-3 bg-white text-black px-3 py-1 rounded">Плати</button>
+</div>
+
+<!-- ПРЕМИУМ -->
+
+<div class="card bg-gray-800 p-4 rounded-xl">
+<h3 class="text-purple-300 text-xl font-bold">ПРЕМИУМ</h3>
+<p class="mt-2">✔ Всичко от СТАНДАРТ</p>
+<p>✔ Физически сертификат</p>
+<p>✔ Подаръчна опаковка</p>
+<p>✔ Приоритетна обработка</p>
+<p class="mt-2 text-xl">$99</p>
+<button onclick="go()" class="mt-3 bg-white text-black px-3 py-1 rounded">Плати</button>
+</div>
+
+</div>
+
+<script>
+function go(){ window.location.href="./user.html"; }
+</script>
+
+</body>
+</html>
+

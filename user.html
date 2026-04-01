@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>Данни</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  background: black;
+  overflow: hidden;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+</style>
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen text-white">
+
+<div class="stars"></div>
+
+<div class="bg-black/60 p-8 rounded-2xl text-center shadow-xl w-80 relative">
+
+<h2 class="text-2xl mb-4">Въведи данни</h2>
+
+<input id="name" placeholder="Име" class="block mb-3 p-2 w-full text-black rounded">
+<input id="surname" placeholder="Фамилия" class="block mb-3 p-2 w-full text-black rounded">
+<input id="email" placeholder="Email" class="block mb-3 p-2 w-full text-black rounded">
+<input id="star" placeholder="Име на звезда" class="block mb-3 p-2 w-full text-black rounded">
+
+<button onclick="next()" class="bg-white text-black px-4 py-2 w-full rounded hover:bg-gray-300 transition">
+Продължи
+</button>
+
+</div>
+
+<script>
+function validEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function next(){
+  let n = document.getElementById("name").value;
+  let s = document.getElementById("surname").value;
+  let e = document.getElementById("email").value;
+  let st = document.getElementById("star").value;
+
+  if(n.length < 2 || s.length < 2 || st.length < 2){
+    alert("Попълни всички полета");
+    return;
+  }
+
+  if(!validEmail(e)){
+    alert("Въведи валиден email");
+    return;
+  }
+
+  localStorage.setItem("user", n + " " + s);
+  localStorage.setItem("star", st);
+  localStorage.setItem("email", e);
+
+  window.location.href = "./checkout.html";
+}
+</script>
+
+</body>
+</html>

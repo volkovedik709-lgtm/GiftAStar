@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>Готово</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  background: black;
+  overflow: hidden;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+</style>
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen text-white text-center">
+
+<div class="stars"></div>
+
+<div class="relative bg-black/60 p-8 rounded-2xl">
+
+<h1 class="text-3xl mb-4">Успешно плащане ⭐</h1>
+
+<p id="info" class="mb-3"></p>
+<p id="mail"></p>
+
+</div>
+
+<script>
+let user = localStorage.getItem("user");
+let star = localStorage.getItem("star");
+let email = localStorage.getItem("email");
+
+info.innerText = user + " закупи звезда \"" + star + "\"";
+mail.innerText = "Сертификатът ще бъде изпратен на: " + email;
+</script>
+
+</body>
+</html>

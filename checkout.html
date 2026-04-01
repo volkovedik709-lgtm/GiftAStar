@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>Плащане</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  background: black;
+  overflow: hidden;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+</style>
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+<div class="stars"></div>
+
+<div class="bg-white p-6 rounded-xl w-80 relative">
+
+<input id="owner" placeholder="Име на карта" class="w-full mb-2 p-2 border">
+<input id="card" placeholder="0000 0000 0000 0000" class="w-full mb-2 p-2 border">
+<input id="date" placeholder="MM/YY" class="w-full mb-2 p-2 border">
+<input id="cvc" placeholder="CVC" class="w-full mb-2 p-2 border">
+
+<button onclick="pay()" class="w-full bg-black text-white py-2 mt-2">
+Плати
+</button>
+
+<p id="err" class="text-red-500"></p>
+
+</div>
+
+<script>
+card.oninput=e=>{
+ let v=e.target.value.replace(/\D/g,'').slice(0,16);
+ e.target.value=v.replace(/(\d{4})/g,'$1 ').trim();
+}
+
+date.oninput=e=>{
+ let v=e.target.value.replace(/\D/g,'').slice(0,4);
+ if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);
+ e.target.value=v;
+}
+
+cvc.oninput=e=>{
+ e.target.value=e.target.value.replace(/\D/g,'').slice(0,3);
+}
+
+function pay(){
+ if(card.value.length<19) return err.innerText="Грешна карта";
+ if(date.value.length<5) return err.innerText="Грешна дата";
+ if(cvc.value.length<3) return err.innerText="Грешен CVC";
+
+ window.location.href="./success.html";
+}
+</script>
+
+</body>
+</html>
